@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Div闪烁</title>
+	<style>
+		#box {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: -100px 0 0 -100px;
+			width: 200px;
+			height: 200px;
+			font: 12px/200px Arial;
+			text-align: center;
+			color: #fff;
+			background: red;
+			cursor: pointer;
+			letter-spacing: 5px;
+		}
+	</style>
+	<script>
+		window.onload = function () {
+			var oBox = document.getElementById("box");
+			var timer = null;
+			// var flag = true;
+
+			oBox.onclick = function () {
+				var i = 0;
+				clearInterval(timer);
+				// if(flag) {
+					timer = setInterval(function () {
+						oBox.style.display = i++ % 2 ? "none" : "block";
+						i > 6 && (clearInterval(timer));
+					}, 80);
+					// oBox.innerHTML = "捉到我就停";
+					// flag = false;
+				// }else {
+				// 	oBox.innerHTML = "点击我就闪";
+				// 	flag = true;
+				// }
+			};
+		};
+	</script>
+</head>
+<body>
+	<div id="box">点击我就闪</div>
+</body>
+</html>

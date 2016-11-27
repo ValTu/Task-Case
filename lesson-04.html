@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>用循环将三个DIV变成红色</title>
-  <style type="text/css">
-    #outer {
-      margin: 10px auto;
-      width: 330px;
-      height: 150px;
-      text-align: center;
-    }
-    #outer div {
-      float: left;
-      display: inline-block;
-      margin: 0 5px;
-      width: 100px;
-      height: 100px;
-      background: black;
-    }
-  </style>
-  <script type="text/javascript">
-    window.onload = function () {
-      var oBtn = document.getElementsByTagName("button")[0];
-      var oDiv = document.getElementById("outer").getElementsByTagName("div");
+	<meta charset="UTF-8">
+	<title>用循环将三个DIV变成红色</title>
+	<style>
+		#outer {
+			margin: 10px auto;
+			width: 500px;
+			text-align: center;
+		}
+		ul {
+			padding: 0;
+			margin: 10px auto;
+			list-style: none;
+			font-size: 0;
+		}
+		ul li {
+			display: inline-block;
+			margin: 0 5px;
+			width: 100px;
+			height: 100px;
+			background-color: black;
+		}
 
-      oBtn.onclick = function () {
-        for(var i = 0; i <oDiv.length; i++) oDiv[i].style.background = "red";
-      };
+	</style>
 
-    };
-  </script>
+	<script>
+		window.onload = function () {
+			var oBtn = document.getElementsByTagName("button")[0];
+			var oLi = document.getElementsByTagName("ul")[0].getElementsByTagName("li");
+
+			oBtn.onclick = function () {
+				for(var i=0; i<oLi.length; i++) {
+					oLi[i].style.backgroundColor = "red";
+				}
+			}
+		};
+	</script>
 </head>
 <body>
-  <div id="outer">
-    <p><button>点击将DIV变成红色</button></p>
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
+	<div id="outer">
+		<button>点击将DIV变成红色</button>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
 </body>
 </html>

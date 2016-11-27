@@ -1,51 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>控制div属性</title>
-  <style type="text/css">
-    #outer {
-      margin: 0 auto;
-      padding: 0;
-      width: 500px;
-      text-align: center;
-    }
-    #div1 {
-      margin: 10px auto;
-      width: 100px;
-      height: 100px;
-      background: black;
-      display: block;
-    }
-  </style>
-  <script type="text/javascript">
-    var changeStyle = function (elem, attr, value) {
-      elem.style[attr] = value;
-    };
-    window.onload = function () {
-      var oBtn = document.getElementsByTagName("input");
-      var oDiv = document.getElementById("div1");
-      var oAtt = ["width", "height", "background", "display", "display"];
-      var oVal = ["200px", "200px", "red", "none", "block"];
+	<meta charset="UTF-8">
+	<title>控制div属性</title>
+	<style>
+		#outer {
+			margin: 10px auto;
+			width: 400px;
+			text-align: center;
+		}
+		#div1 {
+			width: 100px;
+			height: 100px;
+			margin: 10px auto;
+			background-color: black;
+		}
+	</style>
 
-      for(var i = 0; i < oBtn.length; i++) {
-        oBtn[i].index = i; //给各个按钮索引值
-        oBtn[i].onclick = function () {
-          this.index == oBtn.length - 1 && (oDiv.style.cssText = ""); //当btn的index=4时，清空js设置的行内样式
-          changeStyle(oDiv, oAtt[this.index], oVal[this.index]);
-        };
-      };
-    };
-  </script>
+	<script>
+		var changeStyle = function (elem, attr, value) {
+			elem.style[attr] = value;     //style[attr]等价于style.attr
+		};
+
+		window.onload = function () {
+			var oBtn = document.getElementsByTagName("input");
+			var oDiv = document.getElementById("div1");
+			var oAtt = ["width", "height", "backgroundColor", "display", "display"];
+			var oVal = ["200px", "200px", "red", "none", "block"];
+
+			for (var i = 0; i < oBtn.length; i++) {
+				oBtn[i].index = i;
+				oBtn[i].onclick = function () {
+					this.index == oBtn.length - 1 && (oDiv.style.cssText = "");
+					// 当this.index等于4时，执行后面的oDiv.style.cssText="";
+					// 等同于   if((this.index)==oBtn.length-1){oDiv.style.cssText="";}
+					// oDiv.style.cssText="" 意为清空JS设置样式，即还原css样式
+					changeStyle(oDiv, oAtt[this.index], oVal[this.index])
+				}
+			}
+		};
+
+		// 知识点
+		// a() && b() :如果执行a()后返回true，则执行b()并返回b的值；如果执行a()后返回false，则整个表达式返回a()的值，b()不执行；
+		// a() || b() :如果执行a()后返回true，则整个表达式返回a()的值，b()不执行；如果执行a()后返回false，则执行b()并返回b()的值；
+		// && 优先级高于 ||
+
+	</script>
 </head>
 <body>
-  <div id="outer">
-    <input type="button" value="变宽">
-    <input type="button" value="变高">
-    <input type="button" value="变色">
-    <input type="button" value="隐藏">
-    <input type="button" value="重置">
-    <div id="div1"></div>
-  </div>
+	<div id="outer">
+		<input type="button" value="变宽">
+		<input type="button" value="变高">
+		<input type="button" value="变色">
+		<input type="button" value="隐藏">
+		<input type="button" value="重置">
+		<div id="div1"></div>
+	</div>
+
+
+
 </body>
 </html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>iPhone手机解锁效果</title>
+	<style>
+		#iphone {
+			margin: 10px auto;
+			position: relative;
+			width: 426px;
+			height: 640px;
+			background: url(image/iphone.jpg) no-repeat;
+		}
+		#lock {
+			position: absolute;
+			left: 50%;
+			bottom: 33px;
+			margin-left: -179px;
+			width: 358px;
+			height: 62px;
+		}
+		#lock span {
+			position: absolute;
+			width: 93px;
+			height: 62px;
+			cursor: pointer;
+			background: url(image/btn.jpg) no-repeat;
+		}
+	</style>
+	<script>
+		window.onload = function () {
+			var iPhone = document.getElementById("iphone");
+			var oLock = document.getElementById("lock");
+			var oBtn = oLock.getElementsByTagName("span")[0];
+			var disX = 0;
+			var maxL = oLock.clientWidth - oBtn.offsetWidth; 
+			//clientWidth  是对象可见的宽度，不包滚动条等边线，会随窗口的显示大小改变。  
+			//offsetWidth  是对象的可见宽度，包滚动条等边线，会随窗口的显示大小改变。 
+			var oBg = document.createElement("img");
+			oBg.src = "image/iphone-2.jpg"; //预加载下的第二张背景，没其他用处
+
+			oBtn.onmousedown = function (e) {
+				var e = event || window.event;
+				disX = e.clientX - this.offsetLeft;
+
+				document.onmousemove = function (e) {
+					var e = event || window.event;
+					var l = e.clientX - disX;
+
+					l < 0 && (l = 0);
+					l > maxL && (l = maxL);
+
+					oBtn.style.left = l + "px";
+
+					oBtn.offsetLeft == maxL && (iPhone.style.background = "url(" + oBg.src + ")", oLock.style.display = "none");
+					return false;
+				};
+
+				document.onmouseup = function () {
+					document.onmousemove = null;
+					document.onmouseup = null;
+					oBtn.releaseCapture && oBtn.releaseCapture();
+
+					oBtn.offsetLeft > maxL / 2 ? 
+						startMove(maxL, function () {
+							iPhone.style.background = "url(" + oBg.src + ")";
+							oLock.style.display = "none";
+						}) : 
+						startMove(0);
+				};
+				this.setCapture && this.setCapture();
+				return false;
+			};
+
+			function startMove(iTarget, fnEnd) {
+				clearInterval(oBtn.timer);
+				oBtn.timer = setInterval(function () {
+					doMove(iTarget, fnEnd);
+				}, 30);
+			};
+
+			function doMove(iTarget, fnEnd) {
+				var iSpeed = (iTarget - oBtn.offsetLeft) / 5;
+				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+				iTarget == oBtn.offsetLeft ? (clearInterval(oBtn.timer), fnEnd && fnEnd()) : oBtn.style.left = oBtn.offsetLeft + iSpeed + "px";
+			};
+		};
+	</script>
+</head>
+<body>
+	<div id="iphone">
+		<div id="lock"><span></span></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标移过，改变图片路径</title>
+	<style>
+		body, div, ul, li {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			font: 12px/1.5 Tahoma;
+			background-color: #000;
+		}
+		ul {
+			list-style-type: none;
+		}
+		img {
+			border: 0;
+			border-radius: 3px;
+		}
+		#box {
+			margin: 10px auto;
+			padding: 5px 5px 8px 8px;
+			width: 212px;
+			background-color: #fff;
+			border-radius: 5px;
+			overflow: hidden;
+			zoom: 1;
+		}
+		#box li, #box li img {
+			float: left;
+			width: 50px;
+			height: 50px;
+			cursor: pointer;
+		}
+		#box li {
+			margin-top: 3px;
+			margin-right: 3px;
+		}
+		#box .first, #box .first img{
+			position: relative;
+			width: 156px;
+			height: 156px;
+		}
+		div {
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 156px;
+			height: 156px;
+			opacity: .5;
+			filter: alpha(opacity=50);
+			background: #fff url(image/loading.gif) center no-repeat;
+		}
+	</style>
+	<script>
+		window.onload = function () {
+			var oImg = document.getElementById("box").getElementsByTagName("img");
+			var oDiv = document.getElementsByTagName("div")[0];
+
+			for(var i=1; i<oImg.length; i++) {
+				oImg[i].onmouseover = function () {
+					var img = new Image();  //创建一个Image对象
+					img.src = oImg[0].src = this.src.replace(/small/, "big");
+					oDiv.style.display = "block";
+					img.complete ? oDiv.style.display = "none" : (oImg[0].onload = function(){oDiv.style.display = "none"})
+				}
+			}
+		};
+	</script>
+</head>
+<body>
+	<ul id="box">
+		<li class="first">
+			<img src="image/big_1.jpg">
+			<div></div>
+		</li>
+		<li><img src="image/small_1.jpg"></li>
+		<li><img src="image/small_2.jpg"></li>
+		<li><img src="image/small_3.jpg"></li>
+		<li><img src="image/small_4.jpg"></li>
+		<li><img src="image/small_5.jpg"></li>
+		<li><img src="image/small_6.jpg"></li>
+		<li><img src="image/small_7.jpg"></li>
+		<li><img src="image/small_8.jpg"></li>
+		<li><img src="image/small_9.jpg"></li>
+		<li><img src="image/small_10.jpg"></li>
+		<li><img src="image/small_11.jpg"></li>
+	</ul>
+</body>
+</html>

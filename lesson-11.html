@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数传参，改变Div任意属性</title>
+	<style>
+		body, p{
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			font: 12px/1.5 Tahoma;
+			color: #333;
+		}
+		#outer {
+			margin: 10px auto;
+			width: 300px;
+		}
+		p {
+			margin-bottom: 10px;
+		}
+		label {
+			display: inline-block;
+			width: 5em;
+			text-align: right;
+		}
+		input {
+			padding: 3px;
+			border: 1px solid #ccc;
+			font-family: inherit;
+		}
+		button {
+			margin-right: 5px;
+		}
+		#div1 {
+			margin: 0 auto;
+			padding: 10px;
+			width: 180px;
+			height: 180px;
+			background-color: #000;
+			color: #fff;
+		}
+	</style>
+
+	<script>
+		var changeStyle = function (elem, name, value) {
+			elem.style[name] = value;
+		};
+
+		window.onload = function () {
+			var oInput = document.getElementsByTagName("input");
+			var oBtn = document.getElementsByTagName("button");
+			var oDiv = document.getElementById("div1");
+
+			oBtn[0].onclick = function () {
+				changeStyle(oDiv, oInput[0].value, oInput[1].value);
+			}
+			oBtn[1].onclick = function () {
+				oDiv.style.cssText = "";
+				// oDiv.removeAttribute("style");
+			}
+
+		};
+
+	</script>
+</head>
+<body>
+	<div id="outer">
+		<p>
+			<label>属性名：</label><input type="text" value="background">
+		</p>
+		<p>
+			<label>属性值：</label><input type="text" value="blue">
+		</p>
+		<p>
+			<label></label><button>确定</button><button>重置</button>
+		</p>
+	</div>
+	<div id="div1">在上方输入框输入“属性名”及“属性值”，点击确定按钮查看效果。</div>
+</body>
+</html>

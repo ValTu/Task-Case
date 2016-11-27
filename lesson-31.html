@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>arguments应用——求出函数参数的总和</title>
+	<style>
+		pre {
+			padding: 10px 15px;
+			font: 12px/1.5 Courier New;
+			color: green;
+			background: #f0f0f0;
+			border: 1px solid #333;
+		}
+		span {
+			color: #999;
+		}
+	</style>
+</head>
+<body>
+<pre>
+&lt;script type="text/javascript"&gt;
+	var i = iResult = 0;
+	function sum () {
+		for(var i = 0; i &lt; arguments.length; i++) {
+			iResult += arguments[i];
+		}
+		return iResult;
+	};
+	<span>//应用</span>
+	alert(sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)); <span>//输出55</span>
+&lt;/script&gt;
+</pre>
+	<script>
+		// arguments指函数的参数
+		// 如 function sum(a, b){}; arguments[0] = a, arguments[1] = b
+		var i = iResult = 0;
+		function sum () {
+			for(i=0; i<arguments.length; i++) {
+				iResult += arguments[i];
+			}
+			return iResult;
+		};
+
+		alert(sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+	</script>
+</body>
+</html>

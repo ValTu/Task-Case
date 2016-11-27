@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>鼠标移入/移出改变样式</title>
-  <style type="text/css">
-    body {
-      font: 12px/1.5 Tahoma;
-      color: #fff;
-    }
-    #box {
-      margin: 10px auto;
-      padding: 10px;
-      width: 150px;
-      height: 150px;
-      border: 10px solid #000;
-      background: #000;
-      cursor: crosshair;
-    }
-    #box.hover{
-      color: red;
-      background: #f0f0f0;
-      border-color: red;
-    }
-  </style>
-  <script type="text/javascript">
-    window.onload = function () {
-      var oBox = document.getElementById("box");
+	<meta charset="UTF-8">
+	<title>鼠标移入/移出改变样式</title>
+	<style>
+		body {
+			font: 12px/1.5 Tahoma;
+		}
+		#outer {
+			margin: 0 auto;
+			padding: 10px;
+			width: 150px;
+			height: 150px;
+			border: 10px solid black;
+			background-color: black;
+			color: #fff;
+			cursor: crosshair;
+		}
+		#outer.hover {
+			border-color: red;
+			color: red;
+			background-color: #fff;
+		}
+	</style>
 
-      oBox.onmouseover = function () {
-        oBox.className = "hover"
-      };
-      oBox.onmouseout = function () {
-        oBox.className = "";
-      };
-    };
-  </script>
+	<script>
+		window.onload = function () {
+			var oDiv = document.getElementById("outer");
+			oDiv.onmouseenter = function () {
+				oDiv.className = "hover";
+			}
+			oDiv.onmouseleave = function () {
+				oDiv.className = "";
+			}
+		};
+	</script>
 </head>
 <body>
-  <div id="box">鼠标移入改变样式，鼠标移出恢复。</div>
+	<div id="outer">鼠标移入改变样式，鼠标移出恢复。</div>
 </body>
 </html>
