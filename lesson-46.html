@@ -80,7 +80,7 @@
 		}
 		#face img.hover, #face img.current {
 			width: 28px;
-			height: 28px;	
+			height: 28px;
 			border: 1px solid #f60;
 			opacity: 1;
 			filter: alpha(opacity=100);
@@ -201,7 +201,7 @@
 			},
 			byClass: function (sclass, oParent) {
 				var aClass = [];
-				var reClass = new RegExg("(^| )" + sClass + "( |$)");
+				var reClass = new RegExg("(^|\\s)" + sClass + "(\\s|$)");
 				var aElem = this.byTagName("*", oParent);
 				for (var i = 0; i < aElem.length; i++) reClass.test(aElem[i].className) && aClass.push(aElem[i]);
 				return aClass;
@@ -286,7 +286,7 @@
 		 		event.ctrlKey && event.keyCode == 13 && fnSend(); //ctrlKey属性为true表示事件发生时Ctrl键被按下并保持，为false则Ctrl键没有按下
 		 	});
 
-		 	//发送广播函数 
+		 	//发送广播函数
 		 	function fnSend() {
 		 		// 检测输入内容是否符合规范
 		 		var reg = /^\s*$/g; // 字符\s ,空格 换行符; 匹配零个一个或几个空格符
@@ -312,7 +312,7 @@
 		 			oLi.innerHTML = "<div class=\"userPic\"><img src=\"" + get.byClass("current", get.byId("face"))[0].src + "\"></div>\
 									 <div class=\"content\">\
 									 	<div class=\"userName\"><a href=\"javascript:;\">" + oUserName.value + "</a>:</div>\
-									 	<div class=\"msgInfo\">" + oConBox.value.replace(/<[^>]*>|&nbsp;/ig, "") + "</div>\ 
+									 	<div class=\"msgInfo\">" + oConBox.value.replace(/<[^>]*>|&nbsp;/ig, "") + "</div>\
 									 	<div class=\"times\"><span>" + format(oDate.getMonth() + 1) + "\u6708" + format(oDate.getDate()) + "\u65e5" + format(oDate.getHours()) + ":" + format(oDate.getMinutes()) + "<span><a class=\"del\" href=\"javascript:;\">\u5220\u9664</a></div>\
 									 </div>";
 					//插入元素 insertBefore() 方法在您指定的已有子节点之前插入新的子节点。
@@ -379,7 +379,7 @@
 		 			//li鼠标划过样式
 		 			EventUtil.addHandler(aLi[i], "mouseover", function (event) {
 		 				this.className = "hover";
-		 				oTmp = get.byClass("times", this)[0]; 
+		 				oTmp = get.byClass("times", this)[0];
 		 				var aA = get.byTagName("a", oTmp); //删除按钮
 		 				if(!aA.length) { //为什么会存在没有删除按钮的情况？？？
 		 					var oA = document.createElement("a");

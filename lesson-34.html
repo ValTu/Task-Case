@@ -25,9 +25,9 @@
 			// 删除/添加第一项
 			aInput[0].onclick = function () {
 				aTmp = getArray(aDiv[0].innerHTML);
-				bS1 ? 
+				bS1 ?
 				// 删除第一项，shift()方法
-				(aTmp.shift(), this.value = this.value.replace("删除","添加"), bS1 = false) : 
+				(aTmp.shift(), this.value = this.value.replace("删除","添加"), bS1 = false) :
 				// 添加第一项，unshift()方法
 				(aTmp.unshift("January(1)"), this.value = this.value.replace("添加","删除"), bS1 = true);
 				// 输出
@@ -37,7 +37,7 @@
 			// 删除/添加最后一项
 			aInput[1].onclick = function () {
 				aTmp = getArray(aDiv[0].innerHTML);
-				bS2 ? 
+				bS2 ?
 				// 删除最后一项，pop()方法
 				(aTmp.pop(), this.value = this.value.replace("删除","添加"), bS2 = false) :
 				// 添加最后一项，push()方法

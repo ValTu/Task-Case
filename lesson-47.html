@@ -18,7 +18,7 @@
 	</style>
 	<script>
 		var getOffset = { //获取上边距，左边距
-			top: function (obj) { 
+			top: function (obj) {
 				// return obj.offsetTop + (obj.offsetParent ? arguments.callee(obj.offsetParent) : 0);
 				return obj.offsetTop + (obj.offsetParent ? this.top(obj.offsetParent) : 0);
 			},
@@ -190,6 +190,6 @@
 	            </ul>
 	        </li>
 		</ul>
-	</div>		
+	</div>
 </body>
 </html>
