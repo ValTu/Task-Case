@@ -68,7 +68,7 @@
 					var oImg = document.createElement("img");
 					//图片预加载
 					var img = new Image();
-					img,src = oImg.src = aLi[this.index].getElementsByTagName("img")[0].src.replace(".jpg", "_big.jpg");
+					img.src = oImg.src = aLi[this.index].getElementsByTagName("img")[0].src.replace(".jpg", "_big.jpg");
 					//插入大图片
 					oBig.appendChild(oImg);
 					//鼠标移过样式
@@ -77,7 +77,7 @@
 					oBig.style.display = oLoading.style.display = "block";
 					//判断大图是否加载成功
 					img.complete ? oLoading.style.display = "none" : (oImg.onload = function() {oLoading.style.display = "none";})
-					// img.onload是当一张图片被加载完成后所触发的事件 
+					// img.onload是当一张图片被加载完成后所触发的事件
 				};
 				//鼠标移动，大图跟随鼠标移动
 				aLi[i].onmousemove = function (event) {

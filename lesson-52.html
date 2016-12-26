@@ -148,7 +148,7 @@
   	 	},
   	 	byClass: function (sClass, oParent) {
   	 		var aClass = [];
-  	 		var reClass = new RegExp("(^| )" + sClass + "( |$)");
+  	 		var reClass = new RegExp("(^|\\s)" + sClass + "(\\s|$)");
   	 		var aElem = this.byTagName("*", oParent);
   	 		for(var i = 0; i < aElem.length; i++) reClass.test(aElem[i].className) && aClass.push(aElem[i]);
   	 		return aClass;

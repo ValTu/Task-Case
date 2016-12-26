@@ -7,7 +7,7 @@
 		body, div {
 			margin: 0;
 			padding: 0;
-		} 
+		}
 		body {
 			color: #fff;
 			font: 16px/1.5 \5fae\8f6f\96c5\9ed1;
@@ -43,9 +43,9 @@
 				var aDate = [oDate.getHours(), oDate.getMinutes(), oDate.getSeconds()];
 				for(var i in aDate) {
 					aSpan[i].innerHTML = format(aDate[i]);
-				} 
+				}
 			};
-			
+
 			function format(a) { // 把单个数字替换为0开头的两位数
 				return a.toString().replace(/^(\d)$/, "0$1");
 				//replace() 方法用于字符串中

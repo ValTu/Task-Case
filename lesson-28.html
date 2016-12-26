@@ -101,7 +101,7 @@
 			},
 			byClass: function(sClass, oParent) {
 				var aClass = [];
-				var reClass = new RegExp("(^| )" + sClass + "( |$)");
+				var reClass = new RegExp("(^|\\s)" + sClass + "(\\s|$)");
 				var aElem = this.byTagName("*", oParent);
 				for(var i=0; i<aElem.length; i++) reClass.test(aElem[i].className) && aClass.push(aElem[i]);
 				return aClass;
@@ -135,7 +135,7 @@
 					oNav.offsetWidth - this.offsetLeft > oSubNav.offsetWidth ?
 
 					//如果在显示范围居左显示
-					oSubNav.style.left = this.offsetLeft + "px" : 
+					oSubNav.style.left = this.offsetLeft + "px" :
 
 					//超出显示范围具右显示
 					oSubNav.style.right = 0;
